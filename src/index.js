@@ -4,7 +4,7 @@ const Enquirer = require('enquirer')
 //I know we said we would use prompt, but I couldn't find a way to have slectable choices
 questions = [
 	{
-		type: 'list',
+		type: 'Select',
 		name: 'packageManager',
 		message: 'Choose a package manager: ',
 		choices: ['npm', 'yarn'],
