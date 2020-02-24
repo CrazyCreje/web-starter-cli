@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/CrazyCreje/web-starter-cli#readme",
   "dependencies": {
+    "inquirer": "^7.0.4",
     "prompt": "^1.0.0"
   }
 }
