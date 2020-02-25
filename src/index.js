@@ -1,7 +1,6 @@
 const { prompt } = require('enquirer');
 const Enquirer = require('enquirer')
 
-//I know we said we would use prompt, but I couldn't find a way to have slectable choices
 questions = [
 	{
 		type: 'Select',
@@ -14,7 +13,21 @@ questions = [
         type: 'input',
         name: 'project',
         message: 'What is the name of your project?'
-    }
+	},
+	{
+		type: 'Select',
+		name: 'frontend',
+		message: 'Choose a frontend framework: ',
+		choices: ['React', 'Angular', 'Vue'],
+		default: 'React'
+	},
+	{
+		type: 'Select',
+		name: 'backend',
+		message: 'Choose a backend framework: ',
+		choices: ['Express', 'Django', 'Elixir'],
+		default: 'Express'
+	}
 
 ];
 
@@ -22,8 +35,4 @@ let answers = async () => await prompt(questions)
 
 answers()
 
-// inquirer
-// 	.prompt(questions)
-// 	.then(answers => {
-// 		console.log(answers)
-// 	});
+
