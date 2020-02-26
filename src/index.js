@@ -25,7 +25,7 @@ questions = [
 		type: 'Select',
 		name: 'backend',
 		message: 'Choose a backend framework: ',
-		choices: ['Express', 'Django', 'Elixir'],
+		choices: ['Express', 'Django', 'Flask'],
 		default: 'Express'
 	}
 
