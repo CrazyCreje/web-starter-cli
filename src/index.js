@@ -26,7 +26,10 @@ const chalk = require('chalk')
 			type: 'Select',
 			name: 'packageManager',
 			message: 'Choose a package manager: ',
-			choices: ['npm', 'yarn'],
+			choices: [
+				{name: 'npm', disabled: !npm}, 
+				{name: 'yarn', disabled: !yarn}
+			],
 			default: 'npm'
 		},
 		{
