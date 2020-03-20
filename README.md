@@ -1,6 +1,7 @@
 # Cloning
 
-To clone *web-starter-cli*, simply paste the following statement in your terminal `git clone https://github.com/CrazyCreje/web-starter-cli.git`
+To clone *web-starter-cli*, simply paste the following statement in your terminal: 
+`git clone https://github.com/CrazyCreje/web-starter-cli.git`
 
 # Intalling Dependencies
 
