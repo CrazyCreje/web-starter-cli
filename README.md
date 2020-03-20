@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/CrazyCreje/web-starter-cli.svg?branch=master)](https://travis-ci.com/CrazyCreje/web-starter-cli)
 # Prerequisites
 
 To successfully run our project, you must have:
