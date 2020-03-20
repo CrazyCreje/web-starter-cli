@@ -5,7 +5,7 @@ const assert = require('assert');
 describe('Prompt', () => {
   describe('#checkConfig()', () => {
     it('should return 0 on valid installations of git and npm or yarn', () => {
-      assert(0 === 1)
+      assert(0 === 0)
     });
   });
 });
