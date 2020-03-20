@@ -1,3 +1,9 @@
+# Prerequisites
+
+To successfully run our project, you must have:
+* `git`
+* `npm` or `yarn`
+
 # Cloning
 
 To clone *web-starter-cli*, simply paste the following statement in your terminal: 
