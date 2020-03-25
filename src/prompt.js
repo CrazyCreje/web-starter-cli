@@ -66,7 +66,8 @@ exports.generateQuestions = ({ npm, yarn }) => {
 //Checks for CRTL-C and exits with goodbye message
 exports.answers = async questions => {
   try {
-    await prompt(questions);
+    var response = await prompt(questions)
+    return response
   } catch (err) {
     console.log(chalk.yellow("Closing web-stater-cli..."));
     shell.exit(0);
