@@ -5,8 +5,9 @@ const {
   generateQuestions,
   answers
 } = require("./prompt");
+const git = require("./git");
 
-const main = () => {
+const main = async () => {
   console.log(
     chalk.magenta(
       "Welcome to web-starter-cli!\nThis program is designed to make your web-development experience easier."
@@ -22,7 +23,12 @@ const main = () => {
 
   checkConfig(config);
   const questions = generateQuestions(config);
-  answers(questions);
+  response = await answers(questions);
+
+  //TODO - move this into project generator when that exists
+  gitRepo = new git(response.project);
+  gitRepo.init();
+
 };
 
 main();

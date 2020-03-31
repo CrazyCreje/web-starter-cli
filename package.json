@@ -22,6 +22,7 @@
     "enquirer": "^2.3.4",
     "inquirer": "^7.0.4",
     "jest": "^25.1.0",
+    "nodegit": "^0.26.5",
     "prettier": "^1.19.1",
     "shelljs": "^0.8.3"
   }
