@@ -6,6 +6,7 @@ const {
   answers
 } = require("./prompt");
 const git = require("./git");
+const react = require("./react");
 
 const main = async () => {
   console.log(
@@ -28,6 +29,8 @@ const main = async () => {
   //TODO - move this into project generator when that exists
   gitRepo = new git(response.project);
   gitRepo.init();
+
+  react.react(response.project);
 
 };
 
