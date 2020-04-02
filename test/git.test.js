@@ -8,7 +8,7 @@ test("Git Test", async () => {
     dummy.init()
 
     //check if we are successfull
-    await fs.promises.access("./projects/dummy/.git");
+    await fs.promises.access("~/web-starter-projects/dummy/.git");
 
 
   }catch(e){
