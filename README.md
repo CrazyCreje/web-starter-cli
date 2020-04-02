@@ -22,4 +22,6 @@ To test *web-starter-cli*, run `npm test`.
 # Running Project
 
 To use *web-starter-cli*, run `npm start`.
+To use your newly created project, run `cd ~/web-starter-projects/INSERT_PROJECT_NAME_HERE/react && npm start`
+
 
