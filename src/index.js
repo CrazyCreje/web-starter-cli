@@ -8,6 +8,8 @@ const {
   answers
 } = require("./prompt");
 
+const projectDir = "~/web-starter-projects/";
+
 const main = async () => {
   console.log(
     chalk.magenta(
@@ -20,6 +22,7 @@ const main = async () => {
     )
   );
 
+
   const config = getConfig();
 
   checkConfig(config);
@@ -27,7 +30,7 @@ const main = async () => {
   response = await answers(questions);
 
   //TODO - move this into project generator when that exists
-  gitRepo = new git(response.project);
+  gitRepo = new git(response.project, projectDir);
   gitRepo.init();
   react.react(response.project);
 };

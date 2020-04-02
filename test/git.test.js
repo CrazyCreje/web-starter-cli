@@ -2,13 +2,13 @@ git = require("../src/git.js");
 fs = require("fs")
 
 test("Git Test", async () => {
-  dummy = new git("dummy");
+  dummy = new git("dummy", "./");
   var failed = false;
   try{
     dummy.init()
 
     //check if we are successfull
-    await fs.promises.access("~/web-starter-projects/dummy/.git");
+    await fs.promises.access("./dummy/.git");
 
 
   }catch(e){

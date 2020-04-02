@@ -2,13 +2,13 @@
 const shell = require("shelljs");
 
 class Git {
-  constructor(name) {
+  constructor(name, projectDir) {
     this.repoName = name;
+    this.projectDir = projectDir;
   }
-
   //initializes the git repository
   init() {
-    shell.exec("git init ~/web-starter-projects/" + this.repoName)
+    shell.exec("git init " + this.projectDir + this.repoName);
   }
 }
 
