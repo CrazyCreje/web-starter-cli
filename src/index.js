@@ -33,6 +33,19 @@ const main = async () => {
   gitRepo = new git(response.project, projectDir);
   gitRepo.init();
   react.react(response.project);
+  console.log(
+    chalk.magenta(
+      "Your new project has been created in the following directory: \n"
+    ) + chalk.green(`${projectDir}${response.project}`)
+  );
+
+  console.log(
+    chalk.magenta(
+      `To run your project, go to ${projectDir}${response.project} and run\n`
+      + chalk.red("npm start ") + chalk.magenta("and open a browser to http://localhost:3000")
+    )
+  );
+
 };
 
 main();
