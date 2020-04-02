@@ -30,7 +30,6 @@ exports.checkConfig = ({ npm, yarn }) => {
 };
 
 exports.generateQuestions = ({ npm, yarn }) => {
-  // TODO: create regex on repo name
   return [
     {
       type: "Select",
@@ -66,7 +65,7 @@ exports.generateQuestions = ({ npm, yarn }) => {
 //Checks for CRTL-C and exits with goodbye message
 exports.answers = async questions => {
   try {
-    return await prompt(questions)
+    return await prompt(questions);
   } catch (err) {
     console.log(chalk.yellow("Closing web-stater-cli..."));
     shell.exit(0);
