@@ -12,16 +12,22 @@ exports.react = async name => {
   //if res/react exists cd into that dir and pull
   //else clone the directory
   //copy react-boilerplate's contents into new git repo
+  if (
+    shell.rm("-rf", "./res/react/.git", "./res/react/.gitignore", "./res/react/.github").code !== 0
+  ) {
+    shell.echo("Error: Copying react resources failed");
+    shell.exit(1);
+  }
 
   if (
-    shell.cp("-r", "./res/react/", `~/web-starter-projects/${name}`).code !== 0
+    shell.cp("-r", "./res/react/*", `~/web-starter-projects/${name}`).code !== 0
   ) {
     shell.echo("Error: Copying react resources failed");
     shell.exit(1);
   }
 
   //switch working directory
-  if(shell.cd(`~/web-starter-projects/${name}/react`).code != 0) {
+  if(shell.cd(`~/web-starter-projects/${name}`).code != 0) {
     shell.echo("Error: Copying react resources failed");
     shell.exit(1);
   }

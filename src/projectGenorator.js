@@ -1,8 +1,9 @@
+const process = require("process");
 const shell = require("shelljs");
 const chalk = require("chalk");
 const git = require("./git");
 const react = require("./react");
-
+const express = require("./express");
 const projectDir = "~/web-starter-projects/";
 
 exports.projectGenorator = answers =>{
@@ -16,7 +17,7 @@ exports.projectGenorator = answers =>{
       "Creating project "
     )
   );
-  if(shell.exec(`mkdir -p ${projectDir}/src`).code!= 0) {
+  if(shell.exec(`mkdir -p ${project_dir}/src`).code!= 0) {
     console.log(chalk.red("Error: failed creating project directory"));
     shell.exit(1);
   }
@@ -31,15 +32,30 @@ exports.projectGenorator = answers =>{
   gitRepo.init();
 
   //backend
-  backend(response);
+  backend(project_dir);
+  if(shell.cd(working_dir) != 0){
+    console.log(chalk.red("Error: failed returning to working dir"));
+    shell.exit(1);
+  }
   //frontend
   frontend(response);
+  if(shell.cd(working_dir) != 0){
+    console.log(chalk.red("Error: failed returning to working dir"));
+    shell.exit(1);
+  }
+
+  //removing resources folder
+  if (shell.rm("-rf", "./res").code !== 0) {
+    shell.echo("Error: Copying react resources failed");
+    shell.exit(1);
+  }
 
   //done
   console.log(
     chalk.magenta(
       "Your new project has been created in the following directory: \n"
     ) + chalk.green(project_dir)
+
   );
 
   console.log(
@@ -62,11 +78,12 @@ function frontend(answers){
     react.react(response.project);
 }
 
-function backend(answers){
+function backend(project_dir){
   //this function will check which back end the user selects
   console.log(
     chalk.magenta(
       "Genorating back end boilerplate with "
     ) + chalk.red(response.backend)
   );
+  express.express(project_dir);
 }
