@@ -10,6 +10,8 @@ To successfully run our project, you must have:
 
 To clone *web-starter-cli*, simply paste the following statement in your terminal: 
 `git clone https://github.com/CrazyCreje/web-starter-cli.git`
+Navigate to the new directory:
+`cd web-starter-cli`
 
 # Installing Dependencies
 
