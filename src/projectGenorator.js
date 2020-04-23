@@ -4,6 +4,8 @@ const chalk = require("chalk");
 const git = require("./git");
 const react = require("./react");
 const express = require("./express");
+const flask = require("./flask");
+
 const projectDir = "~/web-starter-projects/";
 
 exports.projectGenorator = answers =>{
@@ -32,7 +34,7 @@ exports.projectGenorator = answers =>{
   gitRepo.init();
 
   //backend
-  backend(project_dir);
+  backend(project_dir, response);
   if(shell.cd(working_dir) != 0){
     console.log(chalk.red("Error: failed returning to working dir"));
     shell.exit(1);
@@ -68,22 +70,31 @@ exports.projectGenorator = answers =>{
 };
 
 
-function frontend(answers){
+function frontend(response){
     //this function will check which front end the user selects
     console.log(
       chalk.magenta(
         "Genorating front end boilerplate with "
       ) + chalk.red(response.frontend)
     );
-    react.react(response.project);
+
+    if(response.frontend == "React"){
+      react.react(response.project);
+    }
+
 }
 
-function backend(project_dir){
+function backend(project_dir, response){
   //this function will check which back end the user selects
   console.log(
     chalk.magenta(
       "Genorating back end boilerplate with "
     ) + chalk.red(response.backend)
   );
-  express.express(project_dir);
+
+  if(response.backend == "Flask"){
+    flask.flask(project_dir);
+  } else if(response.backend == "Express"){
+    express.express(project_dir);
+  }
 }
