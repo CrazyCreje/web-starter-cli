@@ -41,4 +41,10 @@ exports.flask = async projectDir => {
     shell.exit(1);
   }
 
+  console.log(chalk.magenta("Returning to working dir"));
+  if(shell.cd(working_dir).code != 0){
+    console.log(chalk.red("Error: failed to change directories"));
+    shell.exit(1);
+  }
+
 }
