@@ -5,7 +5,7 @@ const chalk = require("chalk");
 exports.flask = async projectDir => {
   const working_dir = process.cwd();
   const createEnv = "python3 -m venv flask-env";
-  const activateEnv = `${working_dir}/src/activate_venv.sh`;
+  const activateEnv = `${working_dir}/src/activate_venv.sh ${projectDir}`;
 
   console.log(chalk.magenta("copying server file..."))
   if(shell.mkdir("-p", `${projectDir}/src/server`).code!= 0){
@@ -34,22 +34,11 @@ exports.flask = async projectDir => {
     shell.exit(1);
   }
 
+  //this script runs the rest of the python setup stuff
   console.log(chalk.magenta("activating venv..."));
   if(shell.exec(activateEnv).code != 0){
     console.log(chalk.red("Error: failed to activate venv"));
     shell.exit(1);
   }
-  shell.exec("which pip");
-  console.log(chalk.magenta("installing python dependencies"));
-  if(shell.exec("pip install flask").code != 0){
-    console.log(chalk.red("Error: failed to install flask"));
-    shell.exit(1);
-  }
-  if(shell.exec("pip freeze > requirements.txt").code != 0){
-    console.log(chalk.red("Error: failed to install flask"));
-    shell.exit(1);
-  }
-
-
 
 }
