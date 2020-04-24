@@ -1,3 +1,7 @@
+"""
+To run this server, run the command:
+    flask run
+"""
 from flask import Flask
 
 

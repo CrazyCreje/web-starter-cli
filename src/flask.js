@@ -16,7 +16,7 @@ exports.flask = async projectDir => {
     console.log(chalk.red("Error: failed to copy flask-server.py"));
     shell.exit(1);
   }
-  if(shell.mv(`${projectDir}/src/server/flask-server.py`, `${projectDir}/src/server/server.py`).code != 0){
+  if(shell.mv(`${projectDir}/src/server/flask-server.py`, `${projectDir}/src/server/wsgi.py`).code != 0){
     console.log(chalk.red("Error: failed to copy flask-server.py"));
     shell.exit(1);
   }
