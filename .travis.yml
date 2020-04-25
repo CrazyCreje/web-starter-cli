@@ -3,7 +3,7 @@ language: python
 python:
   - 3.8
 before_install:
-  - python -m pip install --user vertualenv
+  - python -m pip install vertualenv
   - nvm install 10
 install:
   - npm install
