@@ -1,15 +1,15 @@
 sudo: false
-matrix:
-	include:
-		- language: node_js
-			node_js:
-				- 10
-		-language: python
-			python:
-				- 3.8
+jobs:
+  include:
+  - language: node_js
+    node_js:
+      - 10
+  -language: python
+    python:
+      - 3.8
 before_install:
-	- python -m pip install --user vertualenv
+  - python -m pip install --user vertualenv
 install:
-	- npm install
+  - npm install
 script:
-	- npm test
+  - npm test
