@@ -4,9 +4,12 @@
 
 To successfully run our project, you must have:
 
+- A Unix based system
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [npm](https://www.npmjs.com/get-npm)
-- A Unix based system
+- [python3/pip3](https://pip.pypa.io/en/stable/installing)
+- [python venv](https://docs.python.org/3/library/venv.html)
+
 
 ###### Click the links to install them if you do not.
 

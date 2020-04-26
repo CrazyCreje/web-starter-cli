@@ -1,14 +1,16 @@
 git = require("../src/git.js");
-fs = require("fs")
+shell = require("shelljs");
+fs = require("fs");
 
 test("Git Test", async () => {
-  dummy = new git("dummy", "./");
+  shell.mkdir("-p", "./testing/git");
+  dummy = new git("git", "./testing/");
   var failed = false;
   try{
     dummy.init()
 
     //check if we are successfull
-    await fs.promises.access("./dummy/.git");
+    await fs.promises.access("./testing/git/.git");
 
 
   }catch(e){
