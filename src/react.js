@@ -20,8 +20,12 @@ exports.react = async name => {
   // }
 
   if (
-    shell.cp("-r", "./templates/react/*", `~/web-starter-projects/${name}`)
-      .code !== 0
+    shell.cp(
+      "-r",
+      "./templates/react/*",
+      "./templates/react/.*",
+      `~/web-starter-projects/${name}`
+    ).code !== 0
   ) {
     shell.echo("Error: Copying react resources failed");
     shell.exit(1);
