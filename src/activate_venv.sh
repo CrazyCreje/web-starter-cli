@@ -10,7 +10,7 @@ if [ $whereIsPip == "$1/flask-venv/bin/pip" ]; then
   exit 1
 fi
 
-pip install flask
+pip3 install flask flask-cors
 if [ "$?" -ne "0" ]; then
   echo "Error: pip install failed"
   deactivate
