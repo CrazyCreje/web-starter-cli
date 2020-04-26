@@ -12,7 +12,7 @@ exports.flask = async projectDir => {
     console.log(chalk.red("Error: failed to create src directory"))
     shell.exit(1);
   }
-  if(shell.cp("./templates/flask-server.py", `${projectDir}/src/server`).code != 0){
+  if(shell.cp("./templates/flask/flask-server.py", `${projectDir}/src/server`).code != 0){
     console.log(chalk.red("Error: failed to copy flask-server.py"));
     shell.exit(1);
   }
