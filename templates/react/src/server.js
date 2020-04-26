@@ -1,8 +1,3 @@
-/*
-This template file was taken from this tutorial:
-https://dev.to/loujaybee/using-create-react-app-with-express
-*/
-
 const express = require("express");
 const app = express();
 const cors = require("cors");
