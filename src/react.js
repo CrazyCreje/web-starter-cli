@@ -41,8 +41,6 @@ exports.react = async name => {
     shell.echo("Error: npm install failed");
     //shell.exit(1); TODO make this not exit with a 1
   }
-  // if (shell.rm("-rf", "./res").code !== 0) {
-  //   shell.echo("Error: Copying react resources failed");
-  //   shell.exit(1);
-  // }
+
+
 };

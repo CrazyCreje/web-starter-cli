@@ -1,7 +1,10 @@
 sudo: false
-language: node_js
-node_js:
-  - 10
+language: python
+python:
+  - 3.8
+before_install:
+  - python -m pip install virtualenv
+  - nvm install 10
 install:
   - npm install
 script:
