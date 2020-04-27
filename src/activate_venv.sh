@@ -5,7 +5,8 @@
 source $1'/flask-env/bin/activate'
 
 whereIsPip=$(which pip)
-if [ $whereIsPip == "$1/flask-venv/bin/pip" ]; then
+echo "$whereIsPip"
+if [ $whereIsPip != "$1/flask-env/bin/pip" ]; then
   echo "Error: pip is not in the environment where it should be"
   exit 1
 fi
