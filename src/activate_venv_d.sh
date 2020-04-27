@@ -7,7 +7,7 @@ if [ $whereIsPip != "$1/venv/bin/pip" ]; then
   exit 1
 fi
 
-python -m pip install Django
+python -m pip install Django django-cors-headers
 if [ "$?" -ne "0" ]; then
   echo "Error: pip install failed"
   deactivate
@@ -36,14 +36,15 @@ if [ "$?" -ne "0" ]; then
   exit 1
 fi
 
-
+cd "$1"/djangoServer
 if [ "$?" -ne "0" ]; then
   echo "Error: cant cd to project dir";
   deactivate
   exit 1
 fi
 
-python djangoServer/manage.py startapp hello_world
+
+python manage.py startapp hello_world
 if [ "$?" -ne "0" ]; then
   echo "Error: failed call to manage.py";
   deactivate
