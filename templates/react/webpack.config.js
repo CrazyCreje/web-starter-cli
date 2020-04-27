@@ -11,32 +11,24 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
+            presets: ["@babel/preset-env"]
+          }
+        }
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
-          },
-        ],
-      },
-    ],
+            loader: "html-loader"
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      filename: "./index.html",
-    }),
-  ],
+      filename: "./index.html"
+    })
+  ]
 };
-// const webpack = require("webpack");
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
-
-// const port = process.env.PORT || 3000;
-
-// module.exports = {
-//   // Webpack configuration goes here
-// };
