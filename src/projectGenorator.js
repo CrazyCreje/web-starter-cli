@@ -5,6 +5,7 @@ const git = require("./git");
 const react = require("./react");
 const express = require("./express");
 const flask = require("./flask");
+const django = require("./django");
 
 const projectDir = "~/web-starter-projects/";
 
@@ -96,5 +97,7 @@ function backend(project_dir, response){
     flask.flask(project_dir);
   } else if(response.backend == "Express"){
     express.express(project_dir);
+  } else if(response.backend == "Django"){
+    django.django(project_dir, response.project);
   }
 }
