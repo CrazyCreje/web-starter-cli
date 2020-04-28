@@ -82,39 +82,6 @@ exports.django = async (projectDir, projectName) => {
       shell.exit(1);
     }
 
-  // //cd to ~[projectName]/hello_world/
-  // if(shell.cd(`${projectDir}/djangoServer/hello_world`).code != 0) {
-  //     console.log(chalk.red("Error: failed to change directory to app subdirectory"));
-  //     shell.exit(1);
-  //   }
-  //
-  // //open views.py and add def hello_world(request):
-  // //                        return render(request, 'hello_world.html', {})
-  // console.log(chalk.magenta("Editing views.py"))
-  // if(shell.exec(`echo "def hello_world(request): return render(request, 'hello_world.html', {})" >> views.py`).code != 0) {
-  //     console.log(chalk.red("Error: failed to append views.py"));
-  //     shell.exit(1);
-  //   }
-  //
-  // //mkdir hello_world/templates/
-  // if(shell.mkdir("-p", `${projectDir}/djangoServer/hello_world/templates/`).code!= 0){
-  //     console.log(chalk.red("Error: failed to create templates directory"))
-  //     shell.exit(1);
-  //   }
-  //
-  // //cd hello_world/templates
-  // if(shell.cd(`${projectDir}/djangoServer/hello_world/templates`).code != 0) {
-  //     console.log(chalk.red("Error: failed to change directory to templates subdirectory"));
-  //     shell.exit(1);
-  //   }
-
-  // //open hello_world.html and add [message]
-  // console.log(chalk.magenta("Editing hello_world.html"));
-  // if(shell.exec(`echo "Thanks for using web-starter-cli,
-  //     this message is from the django backend" >> hello_world.html`).code != 0) {
-  //     console.log(chalk.red("Error: failed to append views.py"));
-  //     shell.exit(1);
-  //   }
 
   //cd to ~/[projectName]/[projectName]
   if(shell.cd(`${projectDir}/djangoServer/djangoServer`).code != 0) {
@@ -135,50 +102,6 @@ exports.django = async (projectDir, projectName) => {
       shell.exit(1);
     }
 
-  // //cd to ~/[projectName]/hello_world
-  // if(shell.cd(`${projectDir}/djangoServer/hello_world`).code != 0) {
-  //     console.log(chalk.red("Error: failed to change directory to app subdirectory"));
-  //     shell.exit(1);
-  //   }
-  //
-  // // //create file urls.py
-  // // if(shell.exec(`echo "App urls" >> urls.py`).code != 0) {
-  // //     console.log(chalk.red("Error: failed to create urls.py"));
-  // //     shell.exit(1);
-  // //   }
-  //
-  // //add from django.urls import path
-  // //    from hello_world import views
-  //
-  // //       urlpatterns = [
-  // //         path('', views.hello_world, name='hello_world'),
-  // //       ]
-  // console.log(chalk.magenta("editing urls.py 1/5"))
-  // if(shell.exec(`echo "from django.urls import path" > urls.py`).code != 0) {
-  //     console.log(chalk.red("Error: failed to append urls.py"));
-  //     shell.exit(1);
-  //   }
-  // console.log(chalk.magenta("editing urls.py 2/5"))
-  // if(shell.exec(`echo "from hello_world import views" >> urls.py`).code != 0) {
-  //     console.log(chalk.red("Error: failed to append urls.py"));
-  //     shell.exit(1);
-  //   }
-  // console.log(chalk.magenta("editing urls.py 3/5"))
-  // if(shell.exec(`echo "urlpatterns = [" >> urls.py`).code != 0) {
-  //     console.log(chalk.red("Error: failed to append urls.py"));
-  //     shell.exit(1);
-  //   }
-  //
-  // console.log(chalk.magenta("editing urls.py 4/5"))
-  // if(shell.exec(`echo "path('', views.hello_world, name='hello_world')," >> urls.py`).code != 0) {
-  //     console.log(chalk.red("Error: failed to append urls.py"));
-  //     shell.exit(1);
-  //   }
-  // console.log(chalk.magenta("editing urls.py 5/5"))
-  // if(shell.exec(`echo "]" >> urls.py`).code != 0) {
-  //     console.log(chalk.red("Error: failed to append urls.py"));
-  //     shell.exit(1);
-  //   }
 
 
 }
