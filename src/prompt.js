@@ -71,10 +71,3 @@ exports.answers = async questions => {
     shell.exit(0);
   }
 };
-
-// module.exports = {
-//   getConfig,
-//   checkConfig,
-//   generateQuestions,
-//   answers
-// };

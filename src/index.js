@@ -7,6 +7,7 @@ const {
   answers
 } = require("./prompt");
 
+// entry point of web-starter-cli
 const main = async () => {
   console.log(
     chalk.magenta(
@@ -19,14 +20,19 @@ const main = async () => {
     )
   );
 
+  // process.on("SIGINT", () => {
+  //   console.log(
+  //     chalk.red("SIGINT or Ctrl+C detected, web-starter-cli exiting...")
+  //   );
+  //   shell.exit(1);
+  // });
 
   const config = getConfig();
 
   checkConfig(config);
   const questions = generateQuestions(config);
-  response = await answers(questions);
+  const response = await answers(questions); // global var... change to const?
 
   pg.projectGenorator(response); //start project genoration
-
 };
 main();

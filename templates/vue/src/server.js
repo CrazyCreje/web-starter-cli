@@ -8,7 +8,8 @@ app.use(cors());
 app.get("/message", (req, res) => {
   console.log("GET request for /message recieved!");
   return res.json({
-    data: "Thanks for using web-starter-cli! This message came from Express.js."
+    data:
+      "Thanks for using web-starter-cli! This message came from Express.js.",
   });
 });
 
