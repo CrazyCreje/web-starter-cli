@@ -2,7 +2,7 @@
 #this file is needed  because I need to execute the pip commands while I am
 #still in the same terminal session, which each call to exec in js most likely
 #is creating new sessions each time so we lose the env after we activate it.
-source $1'/flask-env/bin/activate'
+. $1'/flask-env/bin/activate'
 
 whereIsPip=$(which python)
 echo "$whereIsPip"
