@@ -4,10 +4,10 @@
 #is creating new sessions each time so we lose the env after we activate it.
 source $1'/flask-env/bin/activate'
 
-whereIsPip=$(which pip)
+whereIsPip=$(which python)
 echo "$whereIsPip"
-if [ $whereIsPip != "$1/flask-env/bin/pip" ]; then
-  echo "Error: pip is not in the environment where it should be"
+if [ $whereIsPip != "$1/flask-env/bin/python" ]; then
+  echo "Error: pip is not tin the environment where it should be"
   exit 1
 fi
 

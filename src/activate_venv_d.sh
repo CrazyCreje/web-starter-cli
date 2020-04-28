@@ -1,8 +1,8 @@
 source $1'/venv/bin/activate'
 
-whereIsPip=$(which pip)
+whereIsPip=$(which python)
 echo "$whereIsPip"
-if [ $whereIsPip != "$1/venv/bin/pip" ]; then
+if [ $whereIsPip != "$1/venv/bin/python" ]; then
   echo "Error: pip is not in the environment where it should be"
   exit 1
 fi
