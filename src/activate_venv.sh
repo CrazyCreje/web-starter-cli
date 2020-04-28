@@ -26,5 +26,4 @@ if [ "$?" -ne "0" ]; then
 fi
 
 #cleanup
-deactivate
 exit 0

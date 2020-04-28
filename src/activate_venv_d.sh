@@ -53,5 +53,4 @@ fi
 
 
 #cleanup
-deactivate
 exit 0
