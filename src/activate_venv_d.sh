@@ -1,5 +1,5 @@
-source $1'/venv/bin/activate'
-
+source "$1/venv/bin/activate"
+echo "$1"
 whereIsPip=$(which python)
 echo "$whereIsPip"
 if [ $whereIsPip != "$1/venv/bin/python" ]; then
@@ -7,7 +7,7 @@ if [ $whereIsPip != "$1/venv/bin/python" ]; then
   exit 1
 fi
 
-python -m pip install Django django-cors-headers
+pip install Django django-cors-headers
 if [ "$?" -ne "0" ]; then
   echo "Error: pip install failed"
   deactivate
