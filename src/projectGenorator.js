@@ -3,17 +3,16 @@ const shell = require("shelljs");
 const chalk = require("chalk");
 const git = require("./git");
 const react = require("./react");
-const express = require("./express");
 const flask = require("./flask");
 const vue = require("./vue");
 const django = require("./django");
 
 const projectDir = "~/web-starter-projects/";
 
-exports.projectGenorator = answers => {
+exports.projectGenorator = async answers => {
   //save current working directory
-  working_dir = process.cwd();
-  project_dir = `${projectDir}${answers.project}`;
+  const working_dir = process.cwd();
+  const project_dir = `${projectDir}${answers.project}`;
   //create project directory
   console.log(chalk.magenta("Creating project "));
   if (shell.exec(`mkdir -p ${project_dir}/src`).code != 0) {
@@ -26,18 +25,7 @@ exports.projectGenorator = answers => {
   gitRepo = new git(answers.project, projectDir);
   gitRepo.init();
 
-  //backend
-  backend(project_dir, answers);
-  if (shell.cd(working_dir) != 0) {
-    console.log(chalk.red("Error: failed returning to working dir"));
-    shell.exit(1);
-  }
-  //frontend
-  frontend(answers);
-  if (shell.cd(working_dir) != 0) {
-    console.log(chalk.red("Error: failed returning to working dir"));
-    shell.exit(1);
-  }
+  await moveBoilerplate(project_dir, answers, working_dir);
 
   //removing resources folder
   if (shell.rm("-rf", "./res").code !== 0) {
@@ -64,32 +52,113 @@ exports.projectGenorator = answers => {
   );
 };
 
-function frontend(response) {
-  //this function will check which front end the user selects
-  console.log(
-    chalk.magenta("Genorating front end boilerplate with ") +
-      chalk.cyan(response.frontend)
-  );
-
-  if (response.frontend == "React") {
-    react.react(response.project, response.packageManager);
-  } else if (response.frontend == "Vue") {
-    vue.vue(response.project, response.packageManager);
-  }
-}
-
-function backend(project_dir, response) {
-  //this function will check which back end the user selects
+const moveBoilerplate = async (project_dir, response, working_dir) => {
   console.log(
     chalk.magenta("Genorating back end boilerplate with ") +
       chalk.cyan(response.backend)
   );
 
-  if (response.backend == "Flask") {
-    flask.flask(project_dir);
-  } else if (response.backend == "Express") {
-    express.express(project_dir);
-  } else if(response.backend == "Django"){
-    django.django(project_dir, response.project);
+  returnToProject(working_dir);
+
+  switch (response.backend) {
+    case "Flask":
+      flask.flask(project_dir);
+      break;
+    case "Django":
+      django.django(project_dir, response.project);
+      break;
+    case "Express":
   }
-}
+
+  copyPJSON(response.frontend, response.backend, project_dir);
+  returnToProject(working_dir);
+
+  console.log(
+    chalk.magenta("Genorating front end boilerplate with ") +
+      chalk.cyan(response.frontend)
+  );
+
+  switch (response.frontend) {
+    case "React":
+      await react.react(project_dir, response.packageManager);
+      break;
+    case "Vue":
+      await vue.vue(project_dir, response.packageManager);
+      break;
+  }
+};
+
+const copyPJSON = (frontend, backend, p_dir) => {
+  switch (frontend) {
+    case "React":
+      switch (backend) {
+        case "Express":
+          if (
+            shell.cp("./templates/pJSON/react-exp/package.json", `${p_dir}`)
+              .code !== 0
+          ) {
+            shell.echo("Error: copy of react-express package.json failed");
+            shell.exit(1);
+          }
+          break;
+        case "Django":
+          if (
+            shell.cp("./templates/pJSON/react-django/package.json", `${p_dir}`)
+              .code !== 0
+          ) {
+            shell.echo("Error: copy of react-django package.json failed");
+            shell.exit(1);
+          }
+          break;
+        case "Flask":
+          if (
+            shell.cp("./templates/pJSON/react-flask/package.json", `${p_dir}`)
+              .code !== 0
+          ) {
+            shell.echo("Error: copy of react-flask package.json failed");
+            shell.exit(1);
+          }
+          break;
+      }
+      break;
+    case "Vue":
+      switch (backend) {
+        case "Express":
+          if (
+            shell.cp("./templates/pJSON/vue-exp/package.json", `${p_dir}`)
+              .code !== 0
+          ) {
+            shell.echo("Error: copy of vue-express package.json failed");
+            shell.exit(1);
+          }
+          break;
+        case "Django":
+          if (
+            shell.cp("./templates/pJSON/vue-django/package.json", `${p_dir}`)
+              .code !== 0
+          ) {
+            shell.echo("Error: copy of vue-django package.json failed");
+            shell.exit(1);
+          }
+          break;
+        case "Flask":
+          if (
+            shell.cp("./templates/pJSON/vue-flask/package.json", `${p_dir}`)
+              .code !== 0
+          ) {
+            shell.echo("Error: copy of vue-flask package.json failed");
+            shell.exit(1);
+          }
+          break;
+      }
+      break;
+  }
+};
+
+// brings user back to web-starter-cli
+const returnToProject = w_dir => {
+  if (shell.cd(w_dir) != 0) {
+    console.log(chalk.red("Error: failed returning to working dir"));
+    shell.exit(1);
+  }
+};

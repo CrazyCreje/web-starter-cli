@@ -1,11 +1,11 @@
 {
-  "name": "vue-test",
+  "name": "vue-django",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "server": "node src/server.js"
+    "server": "source venv/bin/activate && python3 djangoServer/manage.py runserver 3001"
   },
   "keywords": [],
   "author": "",

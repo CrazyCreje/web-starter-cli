@@ -1,21 +1,21 @@
 const shell = require("shelljs");
 const deps = require("./deps");
 
-exports.react = async (name, pm) => {
+exports.react = async (p_dir, pm) => {
   if (
-    shell.cp(
+    (await shell.cp(
       "-r",
       "./templates/react/*",
       "./templates/react/.*",
-      `~/web-starter-projects/${name}`
-    ).code !== 0
+      `${p_dir}`
+    ).code) !== 0
   ) {
     shell.echo("Error: Copying react resources failed");
     shell.exit(1);
   }
 
   //switch working directory
-  if (shell.cd(`~/web-starter-projects/${name}`).code != 0) {
+  if (shell.cd(`${p_dir}`).code != 0) {
     shell.echo("Error: Copying react resources failed");
     shell.exit(1);
   }
