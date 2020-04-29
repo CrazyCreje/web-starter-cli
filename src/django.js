@@ -137,11 +137,4 @@ exports.django = async (projectDir, projectName) => {
     );
     shell.exit(1);
   }
-
-  if (shell.cd(`${working_dir}`).code != 0) {
-    console.log(
-      chalk.red("Error: failed to change directory to project subdirectory")
-    );
-    shell.exit(1);
-  }
 };
