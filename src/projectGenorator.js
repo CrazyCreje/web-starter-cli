@@ -70,6 +70,7 @@ const moveBoilerplate = async (project_dir, response, working_dir) => {
     case "Express":
   }
 
+  returnToProject(working_dir);
   copyPJSON(response.frontend, response.backend, project_dir);
   returnToProject(working_dir);
 
