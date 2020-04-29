@@ -1,12 +1,12 @@
 {
-  "name": "react-exp",
+  "name": "react-flask",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "proxy": "https://localhost:3001",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "server": "node src/server.js",
+    "server": "source flask-env/bin/activate && flask -p 3001",
     "build": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,7 +31,6 @@
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

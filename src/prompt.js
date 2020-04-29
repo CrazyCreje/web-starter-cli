@@ -12,7 +12,6 @@ exports.getConfig = () => {
 exports.checkConfig = ({ npm, yarn }) => {
   if (!shell.which("git")) {
     shell.echo(
-      // maybe use console.log with chalk?
       "It appears that you don't have git installed. Before running web-starter-cli,\n" +
         "please install git and add it to your PATH."
     );
@@ -50,7 +49,7 @@ exports.generateQuestions = ({ npm, yarn }) => {
       type: "Select",
       name: "frontend",
       message: "Choose a frontend framework: ",
-      choices: ["React", "Angular", "Vue"],
+      choices: ["React", { name: "Angular", disabled: true }, "Vue"],
       default: "React"
     },
     {
@@ -62,12 +61,13 @@ exports.generateQuestions = ({ npm, yarn }) => {
     }
   ];
 };
-//Checks for CRTL-C and exits with goodbye message
+
+// asynchronously awaits for user input on each question
 exports.answers = async questions => {
   try {
     return await prompt(questions);
   } catch (err) {
     console.log(chalk.yellow("Closing web-stater-cli..."));
-    shell.exit(0);
+    shell.exit(1);
   }
 };
