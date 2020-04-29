@@ -6,7 +6,7 @@
   "proxy": "https://localhost:3001",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "server": "source flask-env/bin/activate && flask -p 3001",
+    "server": ". flask-env/bin/activate && cd src/server && flask run -h localhost -p 3001",
     "build": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

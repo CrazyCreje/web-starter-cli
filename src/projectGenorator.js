@@ -9,7 +9,7 @@ const django = require("./django");
 
 const projectDir = "~/web-starter-projects/";
 
-exports.projectGenorator = answers => {
+exports.projectGenorator = async answers => {
   //save current working directory
   const working_dir = process.cwd();
   const project_dir = `${projectDir}${answers.project}`;
@@ -25,9 +25,7 @@ exports.projectGenorator = answers => {
   gitRepo = new git(answers.project, projectDir);
   gitRepo.init();
 
-  // // backend(project_dir, answers); //backend boilerplate transfer
-  // frontend(project_dir, answers); //frontend boilerplate transfer
-  moveBoilerplate(project_dir, answers, working_dir);
+  await moveBoilerplate(project_dir, answers, working_dir);
 
   //removing resources folder
   if (shell.rm("-rf", "./res").code !== 0) {
@@ -54,7 +52,7 @@ exports.projectGenorator = answers => {
   );
 };
 
-const moveBoilerplate = (project_dir, response, working_dir) => {
+const moveBoilerplate = async (project_dir, response, working_dir) => {
   console.log(
     chalk.magenta("Genorating back end boilerplate with ") +
       chalk.cyan(response.backend)
@@ -69,6 +67,7 @@ const moveBoilerplate = (project_dir, response, working_dir) => {
     case "Django":
       django.django(project_dir, response.project);
       break;
+    case "Express":
   }
 
   copyPJSON(response.frontend, response.backend, project_dir);
@@ -81,10 +80,10 @@ const moveBoilerplate = (project_dir, response, working_dir) => {
 
   switch (response.frontend) {
     case "React":
-      react.react(project_dir, response.packageManager);
+      await react.react(project_dir, response.packageManager);
       break;
     case "Vue":
-      vue.vue(project_dir, response.packageManager);
+      await vue.vue(project_dir, response.packageManager);
       break;
   }
 };
