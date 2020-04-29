@@ -1,4 +1,4 @@
-source $1'/venv/bin/activate'
+. $1'/venv/bin/activate'
 
 whereIsPip=$(which pip)
 echo "$whereIsPip"
