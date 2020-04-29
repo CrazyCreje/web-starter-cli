@@ -1,13 +1,13 @@
-. $1'/venv/bin/activate'
-
-whereIsPip=$(which pip)
+. "$1/venv/bin/activate"
+echo "$1"
+whereIsPip=$(which python)
 echo "$whereIsPip"
-if [ $whereIsPip != "$1/venv/bin/pip" ]; then
+if [ $whereIsPip != "$1/venv/bin/python" ]; then
   echo "Error: pip is not in the environment where it should be"
   exit 1
 fi
 
-python -m pip install Django django-cors-headers
+pip install Django django-cors-headers
 if [ "$?" -ne "0" ]; then
   echo "Error: pip install failed"
   deactivate
@@ -53,5 +53,4 @@ fi
 
 
 #cleanup
-deactivate
 exit 0
